@@ -50,9 +50,16 @@ jobs:
       - name: Construire l'application Angular
         run: npm run build --prod
 
+      - name: Vérifier la création du répertoire dist/TpDevops
+        run: |
+          if [ ! -d "dist/TpDevops" ]; then
+            echo "Le dossier dist/TpDevops n'a pas été trouvé. Vérifiez la configuration de votre build."
+            exit 1
+          fi
+
       - name: Déployer sur GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: dist/TpDevops  # Remplacez TpDevops par le nom réel du dossier de votre projet
+          folder: dist/TpDevops  # Assurez-vous que ce chemin correspond bien à l'output de votre build Angular
           token: ${{ secrets.GITHUB_TOKEN }}
