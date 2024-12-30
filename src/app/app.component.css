@@ -1,0 +1,64 @@
+/* Style global pour centrer le contenu */
+div {
+    margin: 0 auto;
+    max-width: 800px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Titre principal */
+  h1 {
+    color: #4CAF50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  /* Sous-titre */
+  h2 {
+    color: #333;
+    font-size: 1.8em;
+    margin: 15px 0;
+    text-decoration: underline;
+  }
+  
+  /* Paragraphe */
+  p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  /* Liste des fonctionnalités */
+  ul {
+    list-style-type: square;
+    padding-left: 20px;
+    color: #444;
+    font-size: 1.1em;
+  }
+  
+  li {
+    margin: 5px 0;
+  }
+  
+  /* Ligne de séparation */
+  hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+  }
+  
+  /* Bouton */
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

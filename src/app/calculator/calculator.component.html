@@ -1,0 +1,17 @@
+<div class="calculator">
+    <h2>Calculatrice</h2>
+    <form (submit)="calculate()">
+      <input type="number"  placeholder="Nombre 1" name="number1" required />
+      <select  name="operation" required>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+      </select>
+      <input type="number" placeholder="Nombre 2" name="number2" required />
+      <button type="submit">Calculer</button>
+    </form>
+  
+    <p *ngIf="result !== null">Résultat : {{ result }}</p>
+  </div>
+  
