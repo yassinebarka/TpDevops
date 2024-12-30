@@ -18,9 +18,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Configurer Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'  # Mise à jour à la version 20 de Node.js
 
       - name: Installer les dépendances
         run: npm install
@@ -37,9 +37,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Configurer Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'  # Mise à jour à la version 20 de Node.js
 
       - name: Installer les dépendances
         run: npm install
