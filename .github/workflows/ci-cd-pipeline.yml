@@ -1,0 +1,61 @@
+name: Pipeline CI/CD TpDevops
+
+# Déclenchement du workflow lors d'un push ou d'une pull request sur la branche main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Job 1: Installer, tester et builder l'application Angular
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v2
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Exécuter les tests
+        run: npm run test -- --watch=false --browsers=ChromeHeadlessCI
+
+      - name: Construire l'application Angular
+        run: npm run build --prod
+
+  # Job 2: Déployer sur GitHub Pages
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout du dépôt
+        uses: actions/checkout@v2
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Installer Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Construire l'application Angular
+        run: npm run build --prod
+
+      - name: Déployer sur GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist/TpDevops  # Remplacez TpDevops par le nom réel du dossier de votre projet
+          token: ${{ secrets.GITHUB_TOKEN }}
