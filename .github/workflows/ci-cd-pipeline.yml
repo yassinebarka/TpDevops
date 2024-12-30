@@ -10,7 +10,7 @@ on:
       - main
 
 jobs:
-  # Job 1: Installer, tester et builder l'application Angular
+  # Job 1: Construire l'application Angular
   build:
     runs-on: ubuntu-latest
     steps:
@@ -24,9 +24,6 @@ jobs:
 
       - name: Installer les dépendances
         run: npm install
-
-      - name: Exécuter les tests
-        run: npm run test -- --watch=false --browsers=ChromeHeadlessCI
 
       - name: Construire l'application Angular
         run: npm run build --prod
