@@ -1,0 +1,32 @@
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - test
+  - deploy
+
+install:
+  stage: build
+  script:
+    - npm install
+
+test:
+  stage: test
+  script:
+    - npm run test -- --watch=false --browsers ChromeHeadless
+
+pages:
+  stage: deploy
+  script:
+    - npm run build -- --base-href /TpDevops/
+    - mkdir public
+    - cp -r dist/TpDevops/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
